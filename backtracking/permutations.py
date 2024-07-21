@@ -32,4 +32,4 @@ def permute ( s : str, uniq_chars = [],pt = 0 ):
 
 permutations = []
 
-print ( permute ( "abcc" ) )
+print ( permute ( "221" ) )
