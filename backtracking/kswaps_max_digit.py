@@ -13,8 +13,6 @@ def kswaps ( s , k , swap_no = 0 ):
     for first_index in range ( len ( s ) - 1 ):
         for second_index in range ( first_index + 1, len(s) ):
                 
-                #second_index = first_index + 1
-                
                 s = swap ( s , first_index, second_index )
                 print(kswaps ( s, k, swap_no + 1 ),swap_no)
                 s = swap ( s , second_index, first_index )
