@@ -1,0 +1,17 @@
+Backtracking = Controlled recursion + pass by reference
+
+pseudocode
+
+function solve ( &v ) {
+    if ( is_solved() ){
+        print / save 
+        return
+    }
+    for ( c in all choices ) {
+        if is_valid ( c ) {
+            changes in v 
+            solve ( &v )
+            revert changes in v
+        }
+    }
+}
