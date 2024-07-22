@@ -1,0 +1,2 @@
+Sometimes choices can be made on each of the elements of input array or string.
+Example in permutation : should this char be included or not
