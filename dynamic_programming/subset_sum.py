@@ -15,22 +15,29 @@ def subset_sum ( nums : list, target_sum : int, n : int ):
 
 def subset_sum_top_bottom ( nums : list, target_sum : int, n : int ):
 
-    dp = [ [ _ for _ in n ] for _ in target_sum ]
+    dp = [ [ 0 for _ in range(target_sum + 1) ] for _ in range(n + 1) ]
 
-    for nums_size in range ( n ):
-        for sub_sum in range ( target_sum ):
+    for nums_size in range ( n + 1):
+        for sub_sum in range ( target_sum + 1 ):
             if sub_sum == 0:
-                dp [ nums_size ][ sub_sum ] = True
+                dp [ nums_size ][ sub_sum ] = 1
 
             elif nums_size == 0:
-                dp [ nums_size ][ sub_sum ] = False
+                dp [ nums_size ][ sub_sum ] = 0
 
-    for nums_size, num in enumerate ( nums ):
-        for sub_sum in range ( target_sum ):
-            if sub_sum != 0 and nums_size != 0:
-                dp [ nums_size ][ sub_sum ] = dp [ nums_size - 1 ][ sub_sum - num ] or dp [ nums_size - 1 ][ sub_sum ]
+    print ( dp )
 
-    return dp [ n - 1 ][ target_sum ]
+    for nums_size in range ( 1 , n + 1 ):
+        for sub_sum in range ( 1 , target_sum + 1 ):
+            if sub_sum > 0 and nums_size > 0 and nums[nums_size - 1] <= sub_sum:
+                dp [ nums_size ][ sub_sum ] = dp [ nums_size - 1 ][ sub_sum - nums [ nums_size - 1 ] ] + dp [ nums_size - 1 ][ sub_sum ]
 
-result = subset_sum ( [ 1, 4, 2, 3 ], target_sum = 20, n = 4 )
+            else:
+                dp[ nums_size ][ sub_sum ] = dp [ nums_size - 1 ][ sub_sum ]
+
+    print ( dp )
+
+    return dp [ n ][ target_sum ]
+
+result = subset_sum_top_bottom ( [ 2, 5 , 3 , 4 ], target_sum = 6, n = 4 )
 print ( result )
