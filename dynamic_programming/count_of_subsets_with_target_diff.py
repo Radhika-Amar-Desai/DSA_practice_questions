@@ -1,3 +1,5 @@
+import math
+
 def count_of_partitions_with_target_diff ( nums : list , target_diff : int ):
     dp = [ [ -1 for _ in range ( sum ( nums ) + 1 ) ] for _ in range ( len ( nums ) + 1 ) ]
     
@@ -35,18 +37,18 @@ def count_of_partitions_with_target_diff ( nums : list , target_diff : int ):
 
         sums_of_subsets = [ subsum for subsum in range ( sum_of_nums + 1 ) if dp [ n ] [ subsum ] > 0 ]
 
-        return sums_of_subsets [ : len ( sums_of_subsets ) // 2 ]
+        return sums_of_subsets [ : math.floor ( len ( sums_of_subsets ) / 2 ) + 1 ]
     
     num_of_partitions_with_target_diff = 0
 
     for first_partition_sum in get_sums_of_first_partition():
         #print ( first_partition_sum )
         if sum_of_nums - 2 * first_partition_sum == target_diff:
-            print ( first_partition_sum )
+            # print ( first_partition_sum )
             num_of_partitions_with_target_diff += dp [ n ] [ first_partition_sum ]   
     
     return num_of_partitions_with_target_diff
     
-nums = [ 2, 3, 5, 8, 10 ]
-answer = count_of_partitions_with_target_diff ( nums , 8 )
+nums = [ 1 , 0 ]
+answer = count_of_partitions_with_target_diff ( nums , 2 )
 print ( answer )
