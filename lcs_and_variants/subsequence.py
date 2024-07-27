@@ -58,8 +58,8 @@ def lcs_dp ( first_str, second_str ):
     return dp [ len ( first_str ) ] [ len ( second_str ) ]
 
 
-first_string = "ABCDEFGHI"
-second_string = "AXBYXYZ"
+first_string = "geek"
+second_string = "ek"
 
 result = lcs_dp ( first_string, second_string )
 print ( result )
