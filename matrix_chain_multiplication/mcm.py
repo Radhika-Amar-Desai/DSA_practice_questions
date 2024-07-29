@@ -16,7 +16,7 @@ def mcm (matrix_dim : list, i = 1, j = 1):
 
     return min_ans
 
-matrix_dim = [40,20,30,10,30]
+matrix_dim = [40,20,30,10,30,60,100]
 print(mcm(matrix_dim, i = 1, j = len(matrix_dim) - 1))
 
 def mcm_dp ( matrix_dim ):
@@ -31,7 +31,7 @@ def mcm_dp ( matrix_dim ):
                                                     matrix_dim[row_index] * matrix_dim[k] * matrix_dim[col_index]\
                                                     for k in range(row_index + 1, col_index)])
     
-    for _ in range(2):
+    for _ in range(len(matrix_dim)):
         fill_dp()
 
     return dp[0][-1]
