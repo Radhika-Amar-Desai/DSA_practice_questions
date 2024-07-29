@@ -1,0 +1,13 @@
+function solve ( int arr[] , int i, int j )
+{
+    if ( i > j ) {
+        return
+    }
+    for k <- 1 to j {
+        temp_ans = solve ( arr , i , k ) + solve ( arr , k + 1 , j )
+        final_ans = process ( temp_ans )
+    }
+    return final_ans
+}
+
+Base Condition = smallest valid input or invalid input
